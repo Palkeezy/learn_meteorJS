@@ -2,7 +2,13 @@ import {Tracker} from "meteor/tracker";
 import SimpleSchema from 'simpl-schema';
 
 
-export const usersAddFormSchema = new SimpleSchema({
+export const usersUpdateFormSchema = new SimpleSchema({
+    _id: {
+        type: String,
+        autoform: {
+            type: "hidden"
+        },
+    },
     name: {
         type: String,
         label: "Your name",
@@ -10,6 +16,10 @@ export const usersAddFormSchema = new SimpleSchema({
     },
     email: {
         type: String,
+        optional: true,
+        autoform: {
+            disabled: true
+        },
         regEx: SimpleSchema.RegEx.Email,
         label: "E-mail address"
     },
@@ -17,6 +27,7 @@ export const usersAddFormSchema = new SimpleSchema({
         type: String,
         label: "Enter a password",
         min: 4,
+        optional: true,
         autoform: {
             type: 'password'
         }
@@ -25,6 +36,7 @@ export const usersAddFormSchema = new SimpleSchema({
         type: String,
         label: "Enter the password again",
         min: 4,
+        optional: true,
         autoform: {
             type: 'password'
         },

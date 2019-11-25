@@ -4,7 +4,7 @@ import {Meteor} from 'meteor/meteor';
 import {Accounts} from 'meteor/accounts-base';
 import {} from 'meteor/underscore';
 import {Roles} from 'meteor/alanning:roles';
-// import { Links } from '../../api/links/links.js';
+//import { Links } from '../../api/links/links.js';
 
 Meteor.startup(() => {
 
@@ -24,13 +24,9 @@ Meteor.startup(() => {
             profile: {name: user.name}
         });
 
-        if (Meteor.roleAssignment.find({'user._id': id}).count() === 0) {
-            user.roles.forEach(function (role) {
-                Roles.createRole(role, {unlessExists: true});
-            });
+        if (data.roles.length > 0) {
             // Need _id of existing user record so this call must come after `Accounts.createUser`.
-            Roles.addUsersToRoles(id, user.roles, 'default-group');
+            Roles.addUsersToRoles(id, user.roles, 'oven');
         }
-
     });
 });

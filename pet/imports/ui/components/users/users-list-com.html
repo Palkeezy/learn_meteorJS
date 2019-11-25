@@ -1,3 +1,26 @@
 <template name="usersListCom">
-    <h2>UsersListCom</h2>
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            {{#each users}}
+            <div class="col-md-3">
+                <div class="ibox">
+                    <div class="ibox-content product-box">
+                        <div class="product-desc">
+                            <a href="#" class="product-name">{{getEmail}}</a>
+
+                            <div class="small m-t-xs">
+                                {{profile.name}}
+                            </div>
+                            <div class="m-t text-righ">
+
+                                <a href="/users/update/{{ _id }}" class="btn btn-xs btn-outline btn-primary">Edit <i
+                                        class="fa fa-long-arrow-right"></i> </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+    </div>
 </template>

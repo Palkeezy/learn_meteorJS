@@ -1,3 +1,13 @@
 <template name="usersUpdateFormCom">
-    <h2>UpdateFormCom</h2>
+    {{#if Template.subscriptionsReady}}
+        <h2>{{getUserName}}</h2>
+        {{> quickForm schema=getUsersUpdateFormSchema id="usersUpdateForm" doc=getUser type="method" meteormethod="users.update"}}
+    {{else}}
+        <div class="spiner-example">
+            <div class="sk-spiner sk-spiner-double-bounce">
+                <div class="sk-spiner-double-bounce1"></div>
+                <div class="sk-spiner-double-bounce2"></div>
+            </div>
+        </div>
+    {{/if}}
 </template>

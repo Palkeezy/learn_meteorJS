@@ -1,6 +1,7 @@
 import './users-add-form-com.html';
 import {usersAddFormSchema} from "../../../api/users/users-add-form-schema.js";
 import {Template} from "meteor/templating";
+import {FlowRouter} from "meteor/kadira:flow-router";
 
 
 Template.usersAddFormCom.helpers({
@@ -14,6 +15,7 @@ Template.usersAddFormCom.onRendered(function () {
         // Called when any submit operation succeeds
         onSuccess: function (formType, result) {
             toastr['success']('User was created', 'Success');
+            FlowRouter.go('App.users.list');
         },
 
         // Called when any submit operation fails
@@ -21,7 +23,6 @@ Template.usersAddFormCom.onRendered(function () {
             toastr['error'](error.reason, 'Error');
         },
     };
-
 
     AutoForm.addHooks('usersAddForm', usersAddFormHooks, true)
 });

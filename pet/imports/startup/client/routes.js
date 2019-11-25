@@ -1,7 +1,8 @@
 import {FlowRouter} from 'meteor/kadira:flow-router';
 import {BlazeLayout} from 'meteor/kadira:blaze-layout';
-
+import {Roles} from 'meteor/alanning:roles';
 // Import needed templates
+
 import '../../ui/layouts/body/body.js';
 import '../../ui/layouts/blank/blank.js';
 import '../../ui/pages/home/home.js';
@@ -44,19 +45,19 @@ allUsers.route('/login', {
 });
 
 adminUsers.route('/users/list', {
-    name: 'App.usersList',
+    name: 'App.users.list',
     action: function () {
         BlazeLayout.render("App_body", {content: "usersList"});
     }
 });
 adminUsers.route('/users/add', {
-    name: 'App.usersAdd',
+    name: 'App.users.add',
     action: function () {
         BlazeLayout.render("App_body", {content: "usersAdd"});
     }
 });
-adminUsers.route('/users/update', {
-    name: 'App.usersUpdate',
+adminUsers.route('/users/update/:uId', {
+    name: 'App.users.update',
     action: function () {
         BlazeLayout.render("App_body", {content: "usersUpdate"});
     }
